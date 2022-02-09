@@ -1,0 +1,25 @@
+1) Список клиентов, у которых заполнен e-mail
+SELECT *
+FROM Clients
+LIKE  Client.Email ‘%@%’
+2) Список клиентов, отсортированный по ИНН в порядке убывания
+SELECT *
+FROM Clients
+ORDER BY Client.INN DESC 
+3) Список счетов со следующими столбцами: Номер счета, Дата счета, Сумма счета, Название клиента, ИНН клиента
+SELECT *
+FROM Clients
+WHERE Invoice.Number, Invoice.Date, Invoice.Amount, Client.id, Client.INN
+4) Список клиентов, у которых были счета в октябре 2018 
+SELECT *
+FROM Clients
+ WHERE month = ‘october’ AND year= ‘2018’
+5) Список клиентов + количество счетов по каждому клиенту. Набор столбцов ИНН, Название, Количество счетов
+SELECT *
+FROM Clients
+WHERE Client.INN AS INN , 
+Invoice.Number AS NAZVANIE, 
+6) Список клиентов + максимальная сумма счета по каждому клиенту. Набор столбцов ИНН, Название, Максимальный счет
+SELECT * FROM Clients
+WHERE Client.INN , Invoice.Number
+Max(Invoice.Amount)
